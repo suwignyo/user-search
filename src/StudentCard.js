@@ -13,15 +13,17 @@ class StudentCard extends Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
+  //Handles the expand button
   handleClick = () => {
     this.setState({ dropDown: !this.state.dropDown });
-    console.log(this.state.dropDown);
   };
 
+  //Handles the input tag
   handleChange(e) {
     this.setState({ value: e.target.value });
   }
 
+  //Handler for when input gets submitted
   onKeyDown(e) {
     if (e.key === "Enter" && e.target.value !== "") {
       this.setState({
@@ -32,7 +34,6 @@ class StudentCard extends Component {
   }
 
   componentDidMount() {}
-  // {this.state.dropDownVisible ? dropdown : null}
   render() {
     let grades = this.props.data.grades.map((grade, index) => (
       <div className="detail grade">

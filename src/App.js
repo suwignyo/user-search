@@ -17,13 +17,17 @@ class App extends Component {
     this.searchTagUpdated = this.searchTagUpdated.bind(this);
   }
 
+  //Name search handler
   searchNameUpdated(term) {
     this.setState({ searchNameTerm: term });
   }
+
+  //Tag search handler
   searchTagUpdated(term) {
     this.setState({ searchTagTerm: term });
   }
 
+  //Adds a tag to the specific student
   addTag = (id, tag) => {
     this.state.students.forEach(element => {
       if (element.id === id) {
@@ -33,6 +37,7 @@ class App extends Component {
   };
 
   componentDidMount() {
+    //Fetch the users from the API and put them into array of students stored into the state
     fetch("https://www.hatchways.io/api/assessment/students")
       .then(results => {
         return results.json();
@@ -57,11 +62,11 @@ class App extends Component {
           return user;
         });
         this.setState({ students: students });
-        // console.log(JSON.stringify(this.state.students));
       });
   }
 
   render() {
+    //Filters through names and tags
     const filteredStudents = this.state.students.filter(
       createFilter(this.state.searchNameTerm, KEYS_TO_FILTERS)
     );
@@ -93,13 +98,3 @@ class App extends Component {
 }
 
 export default App;
-
-// const grades = () => {
-//   this.state.students.map(student => {
-//     {student.grades.map((grade, index) => (
-//       <div>
-//         Test {index + 1}: {grade}
-//       </div>
-//     ))}
-//   })
-// };
