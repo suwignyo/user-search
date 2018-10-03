@@ -30,3 +30,63 @@
     transform: rotate(360deg);
   }
 }
+
+.container {
+
+  overflow: auto;
+  height: 70vh;
+  border: 1px solid black;
+  margin: 5rem;
+}
+
+.card {
+  border-bottom: 1px solid gainsboro;
+  display: flex
+}
+
+input {
+  width: 97%;
+    border: none;
+    border-bottom: 1px solid gainsboro;
+    font-size: x-large;
+}
+
+.avatar-container{
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+}
+
+img {
+  height: 100px;
+  width: 100px;
+  border: 1px solid gainsboro;
+  border-radius: 100px;
+}
+
+.name{
+  font-weight: bold;
+    font-size: 2rem;
+}
+
+.details {
+  width: 100%
+}
+
+.name-expand {
+  display: flex;
+  justify-content: space-between
+}
+
+.expand {
+  background: none;
+  border: none;
+  font-size: xx-large;
+  display: flex;
+  align-items: center;
+}
+
+.email, .company, .skill, .avg-grades, {
+  font-size: 2rem;
+  font-family: 'Raleway', sans-serif;
+}
