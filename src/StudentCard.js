@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "./App.css";
 
 class StudentCard extends Component {
   constructor(props) {
@@ -11,6 +12,7 @@ class StudentCard extends Component {
     this.onKeyDown = this.onKeyDown.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
+
   handleClick = () => {
     this.setState({ dropDown: !this.state.dropDown });
     console.log(this.state.dropDown);
@@ -21,7 +23,7 @@ class StudentCard extends Component {
   }
 
   onKeyDown(e) {
-    if (e.key === "Enter") {
+    if (e.key === "Enter" && e.target.value !== "") {
       this.setState({
         value: ""
       });
@@ -33,11 +35,13 @@ class StudentCard extends Component {
   // {this.state.dropDownVisible ? dropdown : null}
   render() {
     let grades = this.props.data.grades.map((grade, index) => (
-      <div>
-        Test {index + 1}: {grade}%
+      <div className="detail grade">
+        Test {index + 1} : {grade}%
       </div>
     ));
-    let tags = this.props.data.tags.map((tag, index) => <button>{tag}</button>);
+    let tags = this.props.data.tags.map((tag, index) => (
+      <button className="tag">{tag}</button>
+    ));
     return (
       <div className="card">
         <div className="avatar-container">
@@ -51,18 +55,21 @@ class StudentCard extends Component {
 
             <i className="fas fa-plus expand" onClick={this.handleClick} />
           </div>
-          <div className="email">Email: {this.props.data.email}</div>
-          <div className="company">
+          <div className="detail email">Email: {this.props.data.email}</div>
+          <div className="detail company">
             Company:
             {this.props.data.company}
           </div>
-          <div className="skill">Skill: {this.props.data.skill}</div>
-          <div className="avg-grades">Average: {this.props.data.average}</div>
+          <div className="detail skill">Skill: {this.props.data.skill}</div>
+          <div className="detail avg-grades">
+            Average: {this.props.data.average}%
+          </div>
           {this.state.dropDown
             ? [
-                grades,
-                tags,
+                <div className="grades-container">{grades}</div>,
+                <div className="tag-container">{tags}</div>,
                 <input
+                  className="tag-input"
                   type="text"
                   placeholder="Add a tag"
                   onKeyDown={this.onKeyDown}

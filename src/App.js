@@ -70,19 +70,23 @@ class App extends Component {
     );
     return (
       <div className="container">
-        <SearchInput
-          className="search-input"
-          onChange={this.searchNameUpdated}
-          placeholder="Search by name"
-        />
-        <SearchInput
-          className="search-input"
-          onChange={this.searchTagUpdated}
-          placeholder="Search by tag"
-        />
-        {filteredTags.map((elem, i) => (
-          <StudentCard key={i} data={elem} addTag={this.addTag} />
-        ))}
+        <div className="search-input-container">
+          <SearchInput
+            className="search-input"
+            onChange={this.searchNameUpdated}
+            placeholder="Search by name"
+          />
+          <SearchInput
+            className="search-input"
+            onChange={this.searchTagUpdated}
+            placeholder="Search by tag"
+          />
+        </div>
+        <div className="card-container">
+          {filteredTags.map((elem, i) => (
+            <StudentCard key={i} data={elem} addTag={this.addTag} />
+          ))}
+        </div>
       </div>
     );
   }
